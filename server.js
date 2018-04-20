@@ -8,7 +8,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.set('view engine', 'ejs')
 app.use(express.static(__dirname + '/public'));
-app.use(session({ secret: 'ssshhhhh', proxy: true, resave: true, saveUninitialized: true, cookie: { maxAge: 600000 } }));
+app.use(session({ secret: 'ssshhhhh', proxy: true, resave: true, saveUninitialized: true, cookie: { maxAge: 24 * 60 * 60 * 1000 } }));
 app.use(flash());
 var routes = require('./routes/Routes'); //importing route
 require('./config/passport')(passport);

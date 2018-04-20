@@ -21,9 +21,17 @@ module.exports = function(app, passport) {
     app.route('/admin_login')
         .post(adminControllers.admin_login);
     app.route('/admin/dashbaord')
-        .get(adminControllers.dashbaord);
+        .get(adminControllers.bootstrap, adminControllers.dashbaord);
     app.route('/admin/logout')
         .get(adminControllers.logout);
+    app.route('/admin/category')
+        .get(adminControllers.bootstrap, adminControllers.category);
+    app.route('/admin/delete_category/:objectId')
+        .get(adminControllers.bootstrap, adminControllers.delete_category);
+    app.route('/admin/addCategory')
+        .get(adminControllers.bootstrap, adminControllers.addCategory);
+    app.route('/admin/add_category')
+        .post(adminControllers.add_category);
     /*---------------------------social login---------------------------------------*/
     app.route('/googlelogin')
         .get(passport.authenticate('google', { scope: ['profile', 'email'] }));

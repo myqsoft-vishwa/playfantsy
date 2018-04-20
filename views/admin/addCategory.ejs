@@ -1,0 +1,63 @@
+<% include ../templete/header %>
+ 
+  <div class="content-wrapper">
+   
+
+    <!-- Main content -->
+    <section class="content">
+      <!-- Info boxes -->
+     
+      <!-- /.row -->
+
+      
+
+      <!-- Main row -->
+      <div class="row">
+        <!-- Left col -->
+        <div class="col-md-12">
+      
+
+          <!-- TABLE: LATEST ORDERS -->
+          <div class="box box-info">
+            
+            <div class="box-header with-border">
+              <h3 class="box-title">Add Category</h3>
+            </div>
+            <!-- /.box-header -->
+            <!-- form start -->
+            <form action="/admin/add_category" method="post"  >
+			
+              <div class="box-body">
+			   <div class="form-group">
+                  <label for="exampleInputEmail1">Category Name</label>
+                  <input  name="categoryName" id="exampleInputEmail1" class="form-control"  type="text" required>
+                </div>
+               
+                
+               
+              </div>
+              <!-- /.box-body -->
+
+              <div class="box-footer">
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </div>
+            </form>
+         
+           
+            <!-- /.box-footer -->
+          </div>
+          <!-- /.box -->
+        </div>
+        <!-- /.col -->
+
+        
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+
+  
+  <% include ../templete/footer %>
