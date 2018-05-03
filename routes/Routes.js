@@ -2,6 +2,10 @@
 module.exports = function(app, passport) {
     var homeControllers = require(process.cwd() + '/controllers/homeController');
     var adminControllers = require(process.cwd() + '/controllers/adminController');
+
+
+
+
     /*--------------------------fornt rout---------------------*/
     app.route('/')
         .get(homeControllers.index);
@@ -22,6 +26,11 @@ module.exports = function(app, passport) {
     app.route('/playerphoto')
         .get(homeControllers.playerphoto);
     /*-----------------------------------adminpanel-----------------------------*/
+
+
+
+
+
     app.route('/admin')
         .get(adminControllers.bootstrap, adminControllers.login);
     app.route('/admin_login')
@@ -42,6 +51,15 @@ module.exports = function(app, passport) {
         .get(adminControllers.matchlist);
     app.route('/admin/listmatch')
         .get(adminControllers.listmatch);
+    app.route('/admin/teampic')
+        .get(adminControllers.teampic);
+    app.route('/admin/playerlist')
+        .get(adminControllers.bootstrap,adminControllers.playerlist);
+
+
+
+
+
 
     /*---------------------------social login---------------------------------------*/
     app.route('/googlelogin')

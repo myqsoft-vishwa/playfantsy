@@ -5,7 +5,7 @@
                     <li class="active"><a data-toggle="tab" href="#home">Cricket</a></li>
                     <li><a data-toggle="tab" href="#menu1">Profile</a></li>
                 </ul>
-                <div class="tab-content">
+                <div class="tab-content" >
                     <div id="home" class="tab-pane fade in active">
                         <h4>Upcomming Match</h4>
                         <div class="rTable">
@@ -13,13 +13,13 @@
                                 <% if(matchlist[i].team1pic != matchlist[i].team2pic){ %>
                                     <a href="/playerlist/<%= matchlist[i].unique_id; %>"><div class="rTableRow">
                                         <div class="rTableCell">
-                                            <img style="width: 75px;" src="images/teampic/<%= matchlist[i].team1pic; %>" />
+                                            <img style="width: 75px;" src="/images/teampic/<%= matchlist[i].team1pic; %>" />
                                         </div>
-                                        <div class="rTableCell">
+                                        <div class="rTableCell loactime" style="width: 400px;color:red;letter-spacing: 4px;" id="<%= matchlist[i].unique_id; %>">
                                             <%= matchlist[i].localtime; %>
                                         </div>
                                         <div class="rTableCell">
-                                            <img style="width: 75px;" src="images/teampic/<%= matchlist[i].team2pic; %>" />
+                                            <img style="width: 75px;" src="/images/teampic/<%= matchlist[i].team2pic; %>" />
                                         </div>
                                     </div>
                                     </a>
@@ -33,4 +33,47 @@
                 </div>
 
 <% include footer %> 
+
+<script>
+$(document).ready(function(){
+   $(".loactime").each(function() {
+    var timeval=$(this).text();
+    var tritime=$.trim(timeval);
+	var classid=$(this).attr('id');
+    initializeClock('clockdiv', tritime,classid);
+});
+});
+function getTimeRemaining(endtime) {
+  var t = Date.parse(endtime) - Date.parse(new Date());
+  var seconds = Math.floor((t / 1000) % 60);
+  var minutes = Math.floor((t / 1000 / 60) % 60);
+  var hours = Math.floor((t / (1000 * 60 * 60)) % 24);
+  var days = Math.floor(t / (1000 * 60 * 60 * 24));
+  return {
+    'total': t,
+    'days': days,
+    'hours': hours,
+    'minutes': minutes,
+    'seconds': seconds
+  };
+}
+
+function initializeClock(id, endtime,classid) {
+  
+
+  function updateClock() {
+    var t = getTimeRemaining(endtime);
+    document.getElementById(classid).innerHTML=t.days+'d  '+t.hours+'h          '+t.minutes+'m        '+t.seconds+'s          ';
+    
+
+    if (t.total <= 0) {
+      clearInterval(timeinterval);
+    }
+  }
+
+  updateClock();
+  var timeinterval = setInterval(updateClock, 1000);
+}
+
+</script>
             

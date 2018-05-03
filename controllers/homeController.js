@@ -69,7 +69,7 @@ exports.dashbaord = function(req, res) {
                 _.each(matchresult, function(sq) {
                     var isod = new Date(sq.dateTimeGMT);
                     var datetime1 = date.format(isod, 'YYYY-MM-DD HH:mm:ss');
-                    var theevent = new Date(datetime1);
+                    /*var theevent = new Date(datetime1);
                     var now = new Date();
                     var sec_num = (theevent - now) / 1000;
                     var days = Math.floor(sec_num / (3600 * 24));
@@ -82,6 +82,8 @@ exports.dashbaord = function(req, res) {
                     if (seconds < 10) { seconds = "0" + seconds; }
 
                     sq.localtime = days + ' days ' + hours + ' hours ' + minutes + ' minutes ' + seconds + ' seconds';
+                    */
+                    sq.localtime =isod;
                     TeamPic.findOne({ "name": sq.team_1 }, function(err, Tpic) {
                         if (Tpic) {
                             sq.team1pic = Tpic.pic;
