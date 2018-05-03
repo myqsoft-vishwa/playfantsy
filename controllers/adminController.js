@@ -1,6 +1,8 @@
 var md5 = require('md5');
 var Admin = require(process.cwd() + "/models/Admin");
 var Category = require(process.cwd() + "/models/Category");
+var Match = require(process.cwd() + "/models/MatchList");
+var request = require('request');
 var adminsession;
 exports.bootstrap = function(req, res, next) {
 
@@ -79,4 +81,29 @@ exports.add_category = function(req, res) {
     categorydata.save();
     req.flash('success_messages', 'Category has been added successfully');
     res.redirect("/admin/category")
+};
+exports.matchlist = function(req, res) {
+    /*request('http://cricapi.com/api/matches/?apikey=L5NOaQDO3mTKjDenIidps0fICyv1', { json: true }, (err, res, body) => {
+        if (err) { return console.log(err); }
+        for (var i = 0; i < body.matches.length; i++) {
+
+            var matchdata = new Match();
+            matchdata.unique_id = body.matches[i].unique_id;
+            matchdata.team_2 = body.matches[i]['team-2'];
+            matchdata.team_1 = body.matches[i]['team-1'];
+            matchdata.type = body.matches[i].type;
+            matchdata.date = body.matches[i].date;
+            matchdata.dateTimeGMT = body.matches[i].dateTimeGMT;
+            matchdata.squad = body.matches[i].squad;
+            matchdata.matchStarted = body.matches[i].matchStarted;
+            matchdata.save();
+
+        }
+    });*/
+
+};
+exports.listmatch=function(req,res){
+    Match.find(function(err, result) {
+        res.render('admin/match.ejs', { data: result });
+    });
 };

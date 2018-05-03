@@ -1,119 +1,36 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <title>Sixsense Buzz : Login</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" type="image/png" href="images/icons/favicon.ico" />
-    <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
-    <link rel="stylesheet" type="text/css" href="fonts/iconic/css/material-design-iconic-font.min.css">
-    <link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
-    <link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
-    <link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css">
-    <link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
-    <link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css">
-    <link rel="stylesheet" type="text/css" href="css/util.css">
-    <link rel="stylesheet" type="text/css" href="css/main.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-   
-    
-</head>
-<style type="text/css">
-.flex-c-m {
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: flex;
-    justify-content: center;
-    -ms-align-items: center;
-    align-items: center;
-}
-
-.bg1 {
-    background-color: #3b5998;
-}
-
-.bg2 {
-    background-color: #1da1f2;
-}
-
-.bg3 {
-    background-color: #ea4335;
-}
-
-.login100-social-item {
-    font-size: 25px;
-    color: #fff;
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    margin: 5px;
-}
-
-a:hover {
-    color: #0056b3;
-    text-decoration: underline;
-}
-
-.login100-social-item:hover {
-    color: #fff;
-    background-color: #333333;
-}
-
-.p-t-54 {
-    padding-top: 30px;
-}
-</style>
-
-<body style="background-color: #999999;">
-    <div class="limiter">
-        <div class="container-login100">
-            <div class="login100-more" style="background-image: url('images/38780208-stadium-wallpapers.jpg');"></div>
-            <div class="wrap-login100">
-                <div style="background-color: #C02530"><img style="margin-left: 35%;" src="images/logo.png" class="img-fluid" alt="logo">
+<% include header %>
 
 
-                </div>
                 <ul class="nav nav-tabs">
                     <li class="active"><a data-toggle="tab" href="#home">Cricket</a></li>
-                    <li><a data-toggle="tab" href="#menu1">Footbal</a></li>
-                    
+                    <li><a data-toggle="tab" href="#menu1">Profile</a></li>
                 </ul>
                 <div class="tab-content">
                     <div id="home" class="tab-pane fade in active">
-                        <h3>Cricket</h3>
-                        
+                        <h4>Upcomming Match</h4>
+                        <div class="rTable">
+                            <% for(var i=0; i< matchlist.length; i++){ %>
+                                <% if(matchlist[i].team1pic != matchlist[i].team2pic){ %>
+                                    <a href="/playerlist/<%= matchlist[i].unique_id; %>"><div class="rTableRow">
+                                        <div class="rTableCell">
+                                            <img style="width: 75px;" src="images/teampic/<%= matchlist[i].team1pic; %>" />
+                                        </div>
+                                        <div class="rTableCell">
+                                            <%= matchlist[i].localtime; %>
+                                        </div>
+                                        <div class="rTableCell">
+                                            <img style="width: 75px;" src="images/teampic/<%= matchlist[i].team2pic; %>" />
+                                        </div>
+                                    </div>
+                                    </a>
+                                    <%  }} %>
+                        </div>
                     </div>
                     <div id="menu1" class="tab-pane fade">
-                        <h3>Footbal</h3>
-                      
+                        <h3>Profile</h3>
+                        <div style="position: absolute;bottom: 0;"><a style="margin-left: 10px;" href="logout">Logout</a></div>
                     </div>
-                   
                 </div>
-            </div>
-        </div>
-    </div>
-    </div>
-    <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
-    <script src="vendor/animsition/js/animsition.min.js"></script>
-    <script src="vendor/bootstrap/js/popper.js"></script>
-    <script src="vendor/select2/select2.min.js"></script>
-    <script src="vendor/daterangepicker/moment.min.js"></script>
-    <script src="vendor/daterangepicker/daterangepicker.js"></script>
-    <script src="vendor/countdowntime/countdowntime.js"></script>
-    <script src="js/main.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-</body>
 
-</html>
+<% include footer %> 
+            

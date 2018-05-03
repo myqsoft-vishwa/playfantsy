@@ -16,3 +16,4 @@ app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
 routes(app,passport);
 app.listen(process.env.PORT || 5000)
+console.log('server run on port 5000')

@@ -1,0 +1,34 @@
+<% include header %>
+
+
+                <ul class="nav nav-tabs">
+                    <li class="active"><a data-toggle="tab" href="#home">Cricket</a></li>
+                   
+                </ul>
+                <div class="tab-content">
+                    <div id="home" class="tab-pane fade in active">
+                        <h4>Player List</h4>
+                        <div class="rTable">
+                            <% for(var i=0; i< matchlist.length; i++){ %>
+                               
+                                    <% for(var j=0; j< matchlist[i].team1pic.length;j++){ %>
+                                    <div class="rTableRow">
+                                        <div class="rTableCell">
+                                           <img src="<%= matchlist[i].team1pic[j].pic; %>" ></img>
+                                        </div>
+                                        <div class="rTableCell">
+                                            <%= matchlist[i].team1pic[j].name; %>
+                                        </div>
+                                        <div class="rTableCell">
+                                          <%= matchlist[i].team1pic[j].teamName; %>
+                                        </div>
+                                    </div>
+                                     <% } %>    
+                                    <%  } %>
+                        </div>
+                    </div>
+                    
+                </div>
+
+<% include footer %> 
+            
